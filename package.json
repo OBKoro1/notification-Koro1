@@ -1,7 +1,7 @@
 {
-  "name": "npmKoro1-notification",
+  "name": "notification-koro1",
   "version": "1.0.0",
-  "description": "Html5 Notification npm包",
+  "description": "(浏览器桌面通知)Html5 Notification npm包",
   "main": "./src/main.js",
   "homepage": "https://github.com/OBKoro1/",
   "scripts": {
