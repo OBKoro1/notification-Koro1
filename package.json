@@ -1,0 +1,26 @@
+{
+  "name": "npmKoro1-notification",
+  "version": "1.0.0",
+  "description": "Html5 Notification npm包",
+  "main": "./src/main.js",
+  "homepage": "https://github.com/OBKoro1/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "d": "bash deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OBKoro1/npmKoro1-notification"
+  },
+  "bugs": {
+    "url": "https://github.com/OBKoro1/npmKoro1-notification/issues",
+    "email": "obkoro1@foxmail.com"
+  },
+  "keywords": [ "HTML5 Notification", "Notification npm", "npm Notification", "HTML5", "Notification", "OBKoro1"],
+  "author": {
+    "name": "OBKoro1",
+    "email": "obkoro1@foxmail.com",
+    "url": "http://obkoro1.com/"
+  },
+  "license": "MIT"
+}
