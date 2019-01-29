@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": "(浏览器桌面通知)Html5 Notification npm包",
   "main": "./src/main.js",
-  "homepage": "https://github.com/OBKoro1/",
+  "homepage": "https://www.npmjs.com/package/notification-koro1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "d": "bash deploy.sh"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OBKoro1/npmKoro1-notification"
+    "url": "https://github.com/OBKoro1/notification-Koro1"
   },
   "bugs": {
-    "url": "https://github.com/OBKoro1/npmKoro1-notification/issues",
+    "url": "https://github.com/OBKoro1/notification-Koro1/issues",
     "email": "obkoro1@foxmail.com"
   },
   "keywords": [ "HTML5 Notification", "Notification npm", "npm Notification", "HTML5", "Notification", "OBKoro1"],
