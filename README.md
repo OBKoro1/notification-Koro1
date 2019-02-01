@@ -12,7 +12,7 @@
 npm i -S notification-koro1
 ```
 
-### 使用 ：
+### 使用：
 
 #### 1. 导入 && 初始化:
 
@@ -123,7 +123,7 @@ requestPermission() // 第四步的函数 再次请求授权
 
 ### 栗子：
 
-[这是一个在vue中使用的栗子]()
+[这是一个在vue中使用的栗子](https://github.com/OBKoro1/notification-Koro1/blob/6749408e1225f4dbcb8101d2eeb4509381de380f/example.vue)
 
 ### 求Star
 
