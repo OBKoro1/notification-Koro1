@@ -1,6 +1,6 @@
 {
   "name": "notification-koro1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "(浏览器桌面通知)Html5 Notification npm包",
   "main": "./src/main.js",
   "homepage": "https://www.npmjs.com/package/notification-koro1",
@@ -16,7 +16,14 @@
     "url": "https://github.com/OBKoro1/notification-Koro1/issues",
     "email": "obkoro1@foxmail.com"
   },
-  "keywords": [ "HTML5 Notification", "Notification npm", "npm Notification", "HTML5", "Notification", "OBKoro1"],
+  "keywords": [
+    "HTML5 Notification",
+    "Notification npm",
+    "npm Notification",
+    "HTML5",
+    "Notification",
+    "OBKoro1"
+  ],
   "author": {
     "name": "OBKoro1",
     "email": "obkoro1@foxmail.com",
