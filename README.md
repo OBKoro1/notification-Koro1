@@ -70,19 +70,16 @@ notificationClass.notificationEvent('onshow', e => {
 ### 4. 请求用户授权
 
 ```js
-requestPermission() // 请求权限
-function requestPermission() {
-  const userSelectFn = msg => {
+const userSelectFn = msg => {
     if (msg === 'already granted' || msg === 'granted') {
-      // 随时可以调用通知
+        // 随时可以调用通知,do something
     } else if (msg === 'close') {
-      // 请求权限通知被关闭
+        // 请求权限通知被关闭,do something
     } else if (msg === 'denied' || msg === 'already denied') {
-      // 请求权限当前被拒绝 || 曾经被拒绝
+        // 请求权限当前被拒绝 || 曾经被拒绝,do something
     }
-  };
-  notificationClass.initNotification(userSelectFn);
-}
+};
+notificationClass.initNotification(userSelectFn); // 请求授权
 ```
 
 ### 5. 显示通知
@@ -95,12 +92,12 @@ notificationClass.userAgreed();
 
 ### 6. 请求权限通知被关闭
 
-当用户关闭权限请求, 可以再次请求权限，可以再次使用第 4 步的函数,再一次请求用户权限：
+当用户关闭权限请求,可以再次请求权限，再次使用第 4 步的函数,即再一次请求用户权限：
 
 > 我们不应该在用户关闭的时候，立即再请求授权，这样会导致用户反感。
 
 ```js
-requestPermission() // 第四步的函数 再次请求授权
+notificationClass.initNotification(userSelectFn); // 请求授权
 ```
 
 ### 参数：
@@ -121,7 +118,7 @@ requestPermission() // 第四步的函数 再次请求授权
 4. `already denied`: 之前被拒绝
 5. `denied`: 用户拒绝
 
-### 栗子：
+### 完整栗子：
 
 [这是一个在vue中使用的栗子](https://github.com/OBKoro1/notification-Koro1/blob/6749408e1225f4dbcb8101d2eeb4509381de380f/example.vue)
 
