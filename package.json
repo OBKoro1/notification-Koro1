@@ -1,9 +1,9 @@
 {
   "name": "notification-koro1",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "(浏览器桌面通知)Html5 Notification npm包",
   "main": "./src/main.js",
-  "homepage": "https://www.npmjs.com/package/notification-koro1",
+  "homepage": "http://obkoro1.com/web_accumulate/accumulate/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "d": "bash deploy.sh"

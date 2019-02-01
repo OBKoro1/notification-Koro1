@@ -23,8 +23,14 @@ export default {
           this.notificationClass.userAgreed();
         } else if (msg === "close") {
           // 请求权限通知被关闭
+          this.requestPermission(); // 请求授权
         } else if (msg === "denied" || msg === "already denied") {
           // 请求权限当前被拒绝 || 曾经被拒绝
+          if (msg === "denied") {
+            alert("您刚刚拒绝显示通知 请在设置中更改设置");
+          } else {
+            alert("您曾级拒绝显示通知 请在设置中更改设置");
+          }
         }
       };
       return this.notificationClass.initNotification(userSelectFn);

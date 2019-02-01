@@ -3,7 +3,7 @@
  * @Github: https://github.com/OBKoro1
  * @Date: 2019-01-23 19:50:26
  * @LastEditors: OBKoro1
- * @LastEditTime: 2019-01-29 19:29:46
+ * @LastEditTime: 2019-02-02 00:00:43
  * @Description: html5 notification(桌面通知)
  */
 class notification {
@@ -36,7 +36,7 @@ class notification {
     if (this.state === 'granted') {
       // 用户已经同意过
       this.msg = 'already granted';
-    } if (this.state === 'default') {
+    } else if (this.state === 'default') {
       // 用户还未选择，可以询问用户是否同意发送通知
       Notification.requestPermission((permission) => {
         this.state = permission;
@@ -44,7 +44,7 @@ class notification {
         if (permission === 'granted') {
           // 用户同意
           this.msg = 'granted';
-        } if (permission === 'default') {
+        } else if (permission === 'default') {
           this.msg = 'close';
         } else {
           // 通知请求被用户拒绝
@@ -53,7 +53,7 @@ class notification {
         return userSelectFn(this.msg);
       });
     } else {
-    // 用户已经拒绝过了
+      // 用户已经拒绝过了
       this.msg = 'already denied';
     }
     if (this.state !== 'default') return userSelectFn(this.msg);

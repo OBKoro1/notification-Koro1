@@ -72,11 +72,18 @@ notificationClass.notificationEvent('onshow', e => {
 ```js
 const userSelectFn = msg => {
     if (msg === 'already granted' || msg === 'granted') {
-        // 随时可以调用通知,do something
+        // 随时可以调用通知
+       return notificationClass.userAgreed();
     } else if (msg === 'close') {
-        // 请求权限通知被关闭,do something
-    } else if (msg === 'denied' || msg === 'already denied') {
-        // 请求权限当前被拒绝 || 曾经被拒绝,do something
+        // 请求权限通知被关闭
+        return notificationClass.initNotification(userSelectFn); // 再次调用
+    } else if(msg === 'denied' || msg === 'already denied') {
+        // 请求权限当前被拒绝 || 曾经被拒绝
+        if (msg === "denied") {
+            alert("您刚刚拒绝显示通知 请在设置中更改设置");
+        }else{
+            alert("您曾级拒绝显示通知 请在设置中更改设置");
+        }
     }
 };
 notificationClass.initNotification(userSelectFn); // 请求授权
@@ -85,6 +92,8 @@ notificationClass.initNotification(userSelectFn); // 请求授权
 ### 5. 显示通知
 
 当用户同意的时候(请求授权的第一个判断)，就可以在合适的时间，调用下面的方法来显示通知。
+
+> 我们可以先请求用户授权，然后在需要的时候再发送通知，微博就是这么做的。
 
 ```js
 notificationClass.userAgreed();
