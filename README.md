@@ -113,7 +113,7 @@ requestPermission() // 第四步的函数 再次请求授权
 2. `denied`: 用户拒绝显示通知
 3. `default`: 用户还未授权显示通知
 
-`msg`: 请求授权的回调，
+`msg`: 请求授权`initNotification`回调函数的参数
 
 1. `already granted`: 用户之前已经同意授权
 2. `granted`: 用户同意授权
