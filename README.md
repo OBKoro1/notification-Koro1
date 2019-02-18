@@ -115,12 +115,12 @@ notificationClass.userAgreed();
 
 ### 插件wiki文档
 
-1. [插件API]()
-2. [插件参数]()
-2. [notification浏览器桌面通知]()：关于使用notification，有可能会遇到的一些问题
-4. [更新日志]()
+1. [插件API](https://github.com/OBKoro1/notification-Koro1/wiki/%E6%8F%92%E4%BB%B6API)
+2. [插件数据](https://github.com/OBKoro1/notification-Koro1/wiki/%E6%8F%92%E4%BB%B6%E6%95%B0%E6%8D%AE)
+2. [notification浏览器桌面通知](https://github.com/OBKoro1/notification-Koro1/wiki/%E5%8D%9A%E5%AE%A2-notification%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A1%8C%E9%9D%A2%E9%80%9A%E7%9F%A5)：关于使用notification，有可能会遇到的一些问题
+4. [更新日志](https://github.com/OBKoro1/notification-Koro1/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97)
 
-### 栗子：
+### 栗子：
 
 [.vue](https://github.com/OBKoro1/notification-Koro1/blob/6749408e1225f4dbcb8101d2eeb4509381de380f/example.vue)文件
 

@@ -3,14 +3,14 @@
  * @Github: https://github.com/OBKoro1
  * @Date: 2019-01-23 19:50:26
  * @LastEditors: OBKoro1
- * @LastEditTime: 2019-02-18 15:12:08
+ * @LastEditTime: 2019-02-18 15:42:11
  * @Description: html5 notification(桌面通知)
  */
 
 import util from './util.js';
 
 class notification {
-  constructor(title, options) {
+  constructor(title = '默认标题', options = {}) {
     this.title = title;
     this.options = options;
     this.support = false; // 浏览器是否支持
