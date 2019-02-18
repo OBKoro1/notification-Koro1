@@ -1,6 +1,6 @@
 # notification-koro1
 
-> 浏览器桌面通知 npm 包,求 Star
+> H5 notification:一个浏览器桌面通知 npm 包,求 [Star](https://github.com/OBKoro1/notification-Koro1)
 
 ### 轻量:
 
@@ -14,9 +14,11 @@ npm i -S notification-koro1
 
 ### 使用：
 
+插件在vue项目中使用的示例：[`.vue`文件](https://github.com/OBKoro1/notification-Koro1/blob/6749408e1225f4dbcb8101d2eeb4509381de380f/example.vue)
+
 #### 1. 导入 && 初始化:
 
-初始化需要两个参数:`title`(通知的标题)、`options`(配置)，具体信息查阅[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/notification)
+初始化需要两个参数:`title`(通知的标题)、`options`(配置)，具体信息查阅[wiki文章]()和[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/notification)
 
 ```js
 import notification from 'notification-koro1'; // 引入npm包
@@ -35,39 +37,45 @@ if (notificationClass.support) {
 }
 ```
 
-#### 3. 事件 && 注册回调事件：
-
-**注册回调事件需要在请求通知之前触发**，否则事件无法绑定到通知上。
-
-**`Notification`事件**：
-
-- `Notification.onclick`：用户点击通知时触发
-- `Notification.onshow`: 通知显示时触发
-- `Notification.onerror`: 通知遇到错误时触发
-- `Notification.onclose`: 用户关闭通知时触发
+#### 3. 注册回调事件：
 
 **注册回调事件**：`notificationEvent`
 
-`notificationEvent`接收两个参数:
+**`notificationEvent`接收一个对象参数，对象的每个属性值必须都是函数**
 
-1. `type`: 字符串 事件
-2. `callBack`: 函数 事件触发时的回调函数
-
-下面是两个栗子:
+下面是栗子:
 
 ```js
-// 浏览器支持
-// 注册回调
-notificationClass.notificationEvent('onclick', e => {
-  console.log('点击通知打开百度', e);
-  window.open('https://www.baidu.com/', '_blank');
-}); // 点击回调
-notificationClass.notificationEvent('onshow', e => {
-  console.log('显示', e);
-}); // 通知显示回调
+// 点击弹窗的回调
+const eventObj = {
+  // 点击通知回调
+  onclick: e => {
+    console.log("点击通知打开百度", e);
+    window.open("https://www.baidu.com/", "_blank");
+  },
+  // 通知显示回调
+  onshow: e => {
+    console.log("显示", e);
+  },
+  // 通知遇到错误回调
+  onerror: e => {
+    console.log("通知报错", e);
+  },
+  // 通知关闭回调
+  onclose: e => {
+    console.log("关闭通知", e);
+  }
+};
+this.notificationClass.notificationEvent(eventObj);
 ```
 
-### 4. 请求用户授权
+注意： 
+
+1. **注册回调事件需要在请求通知之前触发**，否则事件无法绑定到通知上
+2. 有多个通知，想绑定不同的回调事件，再次调用这个API，绑定新的通知
+3. 插件会对对象参数和对象属性的value值进行检测，检测不通过的话，将不会绑定回调。
+
+#### 4. 请求用户授权
 
 ```js
 const userSelectFn = msg => {
@@ -80,16 +88,16 @@ const userSelectFn = msg => {
     } else if(msg === 'denied' || msg === 'already denied') {
         // 请求权限当前被拒绝 || 曾经被拒绝
         if (msg === "denied") {
-            alert("您刚刚拒绝显示通知 请在设置中更改设置");
+            console.log("您刚刚拒绝显示通知 请在设置中更改设置");
         }else{
-            alert("您曾级拒绝显示通知 请在设置中更改设置");
+            console.log("您曾级拒绝显示通知 请在设置中更改设置");
         }
     }
 };
 notificationClass.initNotification(userSelectFn); // 请求授权
 ```
 
-### 5. 显示通知
+#### 5. 显示通知
 
 当用户同意的时候(请求授权的第一个判断)，就可以在合适的时间，调用下面的方法来显示通知。
 
@@ -99,38 +107,23 @@ notificationClass.initNotification(userSelectFn); // 请求授权
 notificationClass.userAgreed();
 ```
 
-### 6. 请求权限通知被关闭
+#### 6. 插件提供功能
 
-当用户关闭权限请求,可以再次请求权限，再次使用第 4 步的函数,即再一次请求用户权限：
+1. 通知自定义时间后自动关闭
+2. 多个通知下，一次性关闭所有通知
+3. 更新配置
 
-> 我们不应该在用户关闭的时候，立即再请求授权，这样会导致用户反感。
+### 插件wiki文档
 
-```js
-notificationClass.initNotification(userSelectFn); // 请求授权
-```
+1. [插件API]()
+2. [插件参数]()
+2. [notification浏览器桌面通知]()：关于使用notification，有可能会遇到的一些问题
+4. [更新日志]()
 
-### 参数：
+### 栗子：
 
-`notificationClass.support`: 布尔值，浏览器是否支持`Notification`
-
-`notificationClass.state`: 用户是否授权。
-
-1. `granted`: 用户同意显示通知，随时可以显示通知
-2. `denied`: 用户拒绝显示通知
-3. `default`: 用户还未授权显示通知
-
-`msg`: 请求授权`initNotification`回调函数的参数
-
-1. `already granted`: 用户之前已经同意授权
-2. `granted`: 用户同意授权
-3. `close`: 请求授权通知被关闭
-4. `already denied`: 之前被拒绝
-5. `denied`: 用户拒绝
-
-### 完整栗子：
-
-[这是一个在vue中使用的栗子](https://github.com/OBKoro1/notification-Koro1/blob/6749408e1225f4dbcb8101d2eeb4509381de380f/example.vue)
+[.vue](https://github.com/OBKoro1/notification-Koro1/blob/6749408e1225f4dbcb8101d2eeb4509381de380f/example.vue)文件
 
 ### 求Star
 
-如果觉得还挺好用的，可以给我点个Star呀
+如果觉得还挺好用的，可以给我点个[Star](https://github.com/OBKoro1/notification-Koro1)呀
