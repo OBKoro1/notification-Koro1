@@ -54,7 +54,7 @@ export default {
     }
   },
   mounted() {
-    // 更多关于notification的内容可以查看文章：https://github.com/OBKoro1/notification-Koro1/wiki/%E5%8D%9A%E5%AE%A2-notification%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A1%8C%E9%9D%A2%E9%80%9A%E7%9F%A5
+    // 了解notification的细节可以查看文章：https://github.com/OBKoro1/notification-Koro1/wiki/%E5%8D%9A%E5%AE%A2-notification%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A1%8C%E9%9D%A2%E9%80%9A%E7%9F%A5
     this.notificationClass = new notificationKoro("标题：状态更新", {}); // 初始化
     if (this.notificationClass.support) {
       //  在initNotification之前 否则将不会自动关闭

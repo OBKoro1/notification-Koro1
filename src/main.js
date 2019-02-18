@@ -3,7 +3,7 @@
  * @Github: https://github.com/OBKoro1
  * @Date: 2019-01-23 19:50:26
  * @LastEditors: OBKoro1
- * @LastEditTime: 2019-02-18 15:42:11
+ * @LastEditTime: 2019-02-18 18:50:04
  * @Description: html5 notification(桌面通知)
  */
 
@@ -24,28 +24,27 @@ class notification {
     } else {
       this.initStatus();
       this.support = true;
-      this.state = Notification.permission;
     }
   }
 
   initStatus() {
     this.notification = null; // API返回值
-    this.state = null; // 用户权限状态
+    this.state = Notification.permission; // 用户权限状态
     this.msg = null; // 用户具体状态
     this.callBackObj = {}; // 回调事件集合
     this.notificationAll = []; // 所有通知
-    this.notificationArr = []; // 不自动关闭的通知
     this.requireInteractionTimeout = false; // 设每个通知是否间隔一段时间关闭
     this.timeout = null; // 多久之后关闭
   }
 
   /**
-   * @description: 弹窗权限验证与权限请求
-   * @param {Function} successFn 成功回调，随时可以发送通知
-   * @param {Function} errorFn 失败回调,用户可能是拒绝也可能是关闭未拒绝
+   * @description: 通知权限验证与权限请求
+   * @param {Function} userSelectFn 回调
    */
   initNotification(userSelectFn) {
     if (!this.checkStatus('support')) return;
+    if (!util.checkData('function', userSelectFn))
+      return console.error('initNotification的参数必须为函数');
     if (this.state === 'granted') {
       // 用户已经同意过
       this.msg = 'already granted';
@@ -100,24 +99,22 @@ class notification {
     } else {
       this.timeout = 5000;
     }
-    this.requireInteractionTimeout = true;
   }
 
   // 通知不自动关闭监听
   notificationWatch() {
     this.notificationAll.push(this.notification); // 保存不自动关闭的通知
     if (this.notification.requireInteraction) {
-      this.notificationArr.push(this.notification); // 保存不自动关闭的通知
       this.everyTimeout();
-      this.watchClose();
     } else {
       this.autoClose();
     }
+    this.watchClose();
   }
 
   // 每个通知是否间隔一段时间关闭
   everyTimeout() {
-    if (!this.requireInteractionTimeout) return;
+    if (!util.checkData('number', this.timeout)) return;
     if (this.options.timeOut && util.checkData('number', this.options.timeOut)) {
       this.timeoutCloseFn(this.options.timeOut);
     } else {
@@ -129,9 +126,9 @@ class notification {
   timeoutCloseFn(timeOut) {
     const value = this.notification.timestamp;
     setTimeout(() => {
-      const index = util.searchArrObj(this.notificationArr, 'timestamp', value);
+      const index = util.searchArrObj(this.notificationAll, 'timestamp', value);
       if (index === -1) return;
-      this.notificationArr[index].close();
+      this.notificationAll[index].close();
     }, timeOut);
   }
 
@@ -139,9 +136,7 @@ class notification {
   watchClose() {
     const value = this.notification.timestamp;
     this.notification.addEventListener('close', e => {
-      const index = util.searchArrObj(this.notificationArr, 'timestamp', value);
       const index2 = util.searchArrObj(this.notificationAll, 'timestamp', value);
-      if (index !== -1) this.notificationArr.splice(index, 1);
       if (index2 !== -1) this.notificationAll.splice(index2, 1);
     });
   }
@@ -175,7 +170,6 @@ class notification {
     for (let item of this.notificationAll.values()) {
       item.close();
     }
-    this.notificationArr = [];
     this.notificationAll = [];
   }
 
