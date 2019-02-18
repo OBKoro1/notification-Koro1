@@ -1,6 +1,6 @@
 {
   "name": "notification-koro1",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "(浏览器桌面通知)Html5 Notification npm包",
   "main": "./src/main.js",
   "homepage": "http://obkoro1.com/web_accumulate/accumulate/",
