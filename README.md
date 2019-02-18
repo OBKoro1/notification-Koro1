@@ -109,9 +109,9 @@ notificationClass.userAgreed();
 
 #### 6. 插件提供功能
 
-1. 通知自定义时间后自动关闭
-2. 多个通知下，一次性关闭所有通知
-3. 更新配置
+1. [不自动关闭的通知自定义时间后自动关闭](https://github.com/OBKoro1/notification-Koro1/wiki/%E6%8F%92%E4%BB%B6API#notificationtimeoutfntimeout)
+2. [多个通知下，一次性关闭所有通知](https://github.com/OBKoro1/notification-Koro1/wiki/%E6%8F%92%E4%BB%B6API#closeall)
+3. [更新通知配置](https://github.com/OBKoro1/notification-Koro1/wiki/%E6%8F%92%E4%BB%B6API#replaceoptionsoptions)，更方便的发布多个通知
 
 ### 插件wiki文档
 
