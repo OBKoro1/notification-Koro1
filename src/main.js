@@ -1,10 +1,11 @@
-/*
- * @Author: OBKoro1
- * @Github: https://github.com/OBKoro1
- * @Date: 2019-01-23 19:50:26
- * @LastEditors: OBKoro1
- * @LastEditTime: 2019-09-01 14:27:16
- * @Description: html5 notification(桌面通知)
+/** 
+ * Author       : OBKoro1
+ * Date         : 2020-05-07 13:55:42
+ * LastEditors  : OBKoro1
+ * LastEditTime : 2020-05-07 13:56:29
+ * FilePath     : \notification-Koro1\src\main.js
+ * Description  : html5 notification(桌面通知)
+ * https://github.com/OBKoro1
  */
 
 import util from './util.js';
